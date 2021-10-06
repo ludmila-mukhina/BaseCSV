@@ -21,7 +21,7 @@ namespace WpfApp2
     /// </summary>
     public partial class MainWindow : Window
     {
-        string path = "Base.csv";
+        string path = "Base.csv";  // путь у файлу
         public MainWindow()
         {
             InitializeComponent();
@@ -29,11 +29,12 @@ namespace WpfApp2
 
         private void BtnWrite_Click(object sender, RoutedEventArgs e)
         {
-            using (StreamWriter sw = new StreamWriter(path)) 
+            using (StreamWriter sw = new StreamWriter(path)) // запись в scv-файл
             {
-                sw.Write(TBName.Text+";");
-                sw.Write(DPDr.SelectedDate.ToString() + ";");
-                if (RBMen.IsChecked==true)
+                sw.Write(TBName.Text+";");    // запись в csv-файл из текстового поля
+                sw.Write(DPDr.SelectedDate.ToString() + ";");   // запись в файл даты, выбранной в календаре
+                // запись в файл пола, котрорый выбрал пользователь:
+                if (RBMen.IsChecked==true)    
                 {
                     sw.Write("Мужской" + ";");
                 }
