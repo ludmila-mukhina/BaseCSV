@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" FontSize="14">
+        Title="MainWindow" Height="300" Width="800" FontSize="14">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="26*"/>
@@ -16,7 +17,8 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Margin="136,0" Width="124">Запись данных</TextBlock>
-        <StackPanel Grid.Row="1" Grid.Column="0">
+        <ScrollViewer Grid.Row="1" Grid.Column="0">
+        <StackPanel >
             <GroupBox Header="Введите имя:">
                 <TextBox Name="TBName"/>
             </GroupBox>
@@ -25,8 +27,8 @@
             </GroupBox>
             <GroupBox Header="Выберите пол:">
                 <StackPanel>
-                <RadioButton Name="RBMen" Content="Мужской"/>
-                <RadioButton Name="RBWomen" Content="Женский"/>
+                    <RadioButton Name="RBMen" Content="Мужской"/>
+                    <RadioButton Name="RBWomen" Content="Женский"/>
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="Выберите черты характера:">
@@ -37,13 +39,34 @@
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="Выберите семейное положение:">
-                <ListBox>
+                <ListBox Name="LBSp">
                     <ListBoxItem Content="Состоит в браке"/>
                     <ListBoxItem Content="Не состоит в браке"/>
                     <ListBoxItem Content="В разводе"/>
                 </ListBox>
             </GroupBox>
             <Button Name="BtnWrite" Click="BtnWrite_Click">Записать данные</Button>
+            <Button Name="BtnShow" Click="BtnShow_Click" IsEnabled="False">Перети к просмотру</Button>
+        </StackPanel>
+        </ScrollViewer>
+        <Image Name="Im" Grid.Row="1" Grid.Column="1" Source="Resources\Шпаргалка с правилами синтаксиса.PNG" Visibility="Collapsed"/>
+        <StackPanel Name="SPShow" Grid.Row="1" Grid.Column="1" Visibility="Visible">
+            <Label>Имя:</Label>
+            <TextBlock Name="TBShowName"></TextBlock>
+            <Label>Дата рождения:</Label>
+            <TextBlock Name="TBShowDR"></TextBlock>
+            <Label>Пол:</Label>
+            <TextBlock Name="TBShowGender"></TextBlock>
+            <Label>Черты характера:</Label>
+            <TextBlock Name="TBShowCharacter"></TextBlock>
+            <Label>Семейное положение:</Label>
+            <TextBlock Name="TBShowSp"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Button Width="20" Content="&lt;&lt;"></Button>
+                <Button Width="20" Content="&lt;"></Button>
+                <Button Width="20" Content="&gt;" Click="Button_Click"></Button>
+                <Button Width="20" Content="&gt;&gt;" Click="Button_Click_1"></Button>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
