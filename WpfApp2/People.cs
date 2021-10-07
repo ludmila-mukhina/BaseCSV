@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp2
 {
-    class People
+    class People  // класс, в котором будут хранится данные из файла
     {
         public string Name { get; set; }
         public string Dr { get; set; }

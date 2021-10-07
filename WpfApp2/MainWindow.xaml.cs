@@ -49,7 +49,8 @@ namespace WpfApp2
                 {
                     sw.Write("Женский" + ";");
                 }
-                string character = "";
+                // запись в файл содержимого отмеченных checkbox
+                string character = "";   
                 if (CBСheerful.IsChecked==true)
                 {
                     character += CBСheerful.Content+" ";
@@ -64,19 +65,19 @@ namespace WpfApp2
                 }
                 character = character.Substring(0, character.Length - 1);
                 sw.Write(character + ";");
-                ListBoxItem lb = (ListBoxItem)LBSp.SelectedItem;
-                sw.Write(lb.Content+"\n");
+                ListBoxItem lb = (ListBoxItem)LBSp.SelectedItem; // создание объекта для считывания содержимого из ListBox
+                sw.Write(lb.Content+"\n");  // запись в файл из объекта ListBoxItem
                 MessageBox.Show("Данные записаны");
                 BtnShow.IsEnabled = true;
                 TBName.Text = "";
             }
         }
-        int i;
+        int i;  // переменная для  просмотра значений
         private void BtnShow_Click(object sender, RoutedEventArgs e)
         {
             Im.Visibility = Visibility.Collapsed;
             SPShow.Visibility = Visibility.Visible;
-            using (StreamReader sr = new StreamReader(path))
+            using (StreamReader sr = new StreamReader(path))  // запись данных из файла в список LispPeole
             {
                 while(sr.EndOfStream!=true)
                 {
@@ -112,7 +113,7 @@ namespace WpfApp2
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)  // переход к последней записи
         {
             try
             {
